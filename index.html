@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>159 Reasons I Love You</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="wrap">
+    <h1>159 Reasons I love you 🥰</h1>
+    <p id="status" class="status">Tap the jar to unlock today’s reason 😋</p>
+
+    <button id="jarBtn" class="jarBtn" type="button">
+      <div class="jar-lid"></div>
+      <div class="jar-glass"></div>
+      <div class="jar-label">Open Jar</div>
+    </button>
+
+    <div id="cardModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+
+      <div class="card" id="card" role="button" tabindex="0" aria-label="Open card">
+        <div class="card-face card-front">
+          <div class="seal">💌</div>
+          <div class="front-text">Tap to open</div>
+        </div>
+
+        <div class="card-face card-back">
+          <div class="reason-title">Today’s reason</div>
+          <div class="reason-text" id="reasonText"></div>
+          <button class="done" id="closeModal" type="button">Accha ji</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
