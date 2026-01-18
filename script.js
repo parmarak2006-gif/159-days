@@ -274,7 +274,11 @@ function closeModalNow() {
   modal.classList.add("hidden");
   modal.setAttribute("aria-hidden", "true");
   card.classList.remove("open");
+
+  // 🔥 THIS is the missing line
+  statusEl.textContent = "Next reason unlocks tomorrow 💞";
 }
+
 
 function lockForNext() {
   const now = new Date();
