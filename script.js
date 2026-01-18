@@ -337,19 +337,40 @@ jarBtn.addEventListener("click", () => {
   // Immediately lock for next time (India midnight)
   lockForNext();
 });
+// --- Modal / Card interactions (bulletproof) ---
 
-
-// Card flip/open
-card.addEventListener("click", () => {
+// Flip only when clicking the card (but NOT when clicking buttons inside it)
+card.addEventListener("click", (e) => {
+  if (e.target.closest("button")) return;
   card.classList.toggle("open");
 });
 
-doneBtn.addEventListener("click", () => {
-  closeModalNow();
-});
+// One modal click handler that catches:
+// - clicking "Accha ji" (even if it's nested)
+// - clicking X
+// - clicking outside on backdrop
+modal.addEventListener("click", (e) => {
+  // If click is on the DONE button (by id OR by class)
+  if (e.target.closest("#doneBtn") || e.target.closest(".done")) {
+    e.preventDefault?.();
+    e.stopPropagation?.();
+    closeModalNow();
+    return;
+  }
 
-closeModal.addEventListener("click", () => {
-  closeModalNow();
+  // If click is on the X close button
+  if (e.target.closest("#closeModal")) {
+    e.preventDefault?.();
+    e.stopPropagation?.();
+    closeModalNow();
+    return;
+  }
+
+  // If click is on the dark backdrop
+  if (e.target.classList.contains("modal-backdrop")) {
+    closeModalNow();
+    return;
+  }
 });
 
 // First load
